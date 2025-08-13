@@ -9,12 +9,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 - [Kinde](https://kinde.com/?utm_source=yt&utm_medium=social&utm_campaign=ytoct24&utm_term=dgray&utm_content=nextjsstack)
     * npx nypm add @kinde-oss/kinde-auth-nextjs
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## PostgresSQL Database
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [drizzle](https://orm.drizzle.team/docs/tutorials/drizzle-with-neon)
+- [Neon](https://console.neon.tech/app/projects/red-firefly-53128268?branchId=br-curly-frost-aerzab9v&database=neondb)
