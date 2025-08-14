@@ -2,21 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import {Form} from "@/components/ui/form"
 
 import { insertCustomerSchema, type insertCustomerSchemaType, type selectCustomerSchemaType } from "@/zod-schemas/customer"
+import { InputWithLabel } from "@/components/inputs/InputWithLabel"
+import { TextAreaWithLabel } from "@/components/inputs/TextAreaWithLabel"
+import { SelectWithLabel } from "@/components/inputs/SelectWithLable"
+import { StatesArray } from "@/constants/StatesArray"
 
 type Props = {
     customer?: selectCustomerSchemaType,
@@ -52,26 +46,72 @@ export default function CustomerForm({customer}: Props) {
             </div>
 
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4 sm:gap-8">
-                    <FormField
-                        control={form.control}
-                        name="firstName"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>First Name</FormLabel>
-                            <FormControl>
-                                <Input 
-                                    placeholder="shadcn" 
-                                    {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                This is your public display name.
-                            </FormDescription>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <Button type="submit">Submit</Button>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col md:flex-row gap-4 md:gap-8">
+                    <div className="flex flex-col gap-4 w-full max-w-xs">
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="First Name" 
+                            nameInSchema="firstName"
+                        />
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="Last Name" 
+                            nameInSchema="lastName"
+                        />
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="Address" 
+                            nameInSchema="address1"
+                        />
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="APT Number (optional)" 
+                            nameInSchema="address2"
+                        />
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="City" 
+                            nameInSchema="city"
+                        />
+                        <SelectWithLabel<insertCustomerSchemaType>
+                            fieldTitle="State"
+                            nameInSchema="state"
+                            data={StatesArray}
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-4 w-full max-w-xs">
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="zip" 
+                            nameInSchema="zip"
+                        />
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="Email Address" 
+                            nameInSchema="email"
+                        />
+                        <InputWithLabel<insertCustomerSchemaType>
+                            fieldTitle="Phone" 
+                            nameInSchema="phone"
+                        />
+                        <TextAreaWithLabel<insertCustomerSchemaType>
+                            fieldTitle="Notes"
+                            nameInSchema="notes"
+                            className="h-40"
+                        />
+
+                        <div className="flex gap-2">
+                            <Button 
+                                type="submit" 
+                                className="w-3/4"
+                                variant="default"
+                                title="Save"
+                            >Save
+                            </Button>
+                            <Button 
+                                type="button" 
+                                variant="destructive"
+                                title="Reset"
+                                onClick={() => form.reset()}
+                            >Reset
+                            </Button>
+                        </div>
+
+                    </div>
                 </form>
             </Form>
 

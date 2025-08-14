@@ -33,7 +33,6 @@ export default async function CustomerFormPage({
 
         } else {
             // new customer form componet
-            // console.log("create new customer")
             return (
                 <CustomerForm />
             )
