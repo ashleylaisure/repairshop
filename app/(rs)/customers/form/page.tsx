@@ -1,5 +1,6 @@
 import { BackButton } from "@/components/BackButton";
 import { getCustomer } from "@/lib/queries/getCustomer";
+import CustomerForm from "./CustomerForm";
 
 export default async function CustomerFormPage({
     searchParams,
@@ -8,8 +9,8 @@ export default async function CustomerFormPage({
 }) {
 
     try {
-        const params = await searchParams
-        const customerId = params.customerid
+        const {customerId} = await searchParams
+        // const customerId = params.customerid
         // console.log("Customer ID:", customerId)
         // Edit customer form
         if(customerId) {
@@ -22,15 +23,20 @@ export default async function CustomerFormPage({
                     </>
                 )
             }
-            // console.log(customer)
-            // put customer form component
+
             return (
-                <pre>{JSON.stringify(customer, null, 2)}</pre>
+                <>
+                    {/* <pre>{JSON.stringify(customer, null, 2)}</pre> */}
+                    <CustomerForm customer={customer}/>
+                </>
             )
 
         } else {
             // new customer form componet
-            console.log("create new customer")
+            // console.log("create new customer")
+            return (
+                <CustomerForm />
+            )
         }
     } catch (error) {
         if(error instanceof Error) {

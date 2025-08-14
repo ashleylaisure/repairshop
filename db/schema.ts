@@ -44,5 +44,3 @@ export const ticketsRelations = relations(tickets,
         })
     })
 )
-
-export type SelectCustomer = typeof customers.$inferSelect;
